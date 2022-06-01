@@ -1,2 +1,5 @@
 /.settings
 /bin
+.classpath
+.project
+build.fxbuild
