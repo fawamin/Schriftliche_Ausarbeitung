@@ -10,23 +10,45 @@ import samegame.common.Constants;
 
 public class SameGamePane extends BorderPane
 {
-   private SameGameBoard board;
-   
-   
+   private SameGameBoard board;   
    private Canvas canvas;
    private Label blockCount = new Label();
+   
+   private final Color [] colors = new Color[]
+   {
+             Color.BLACK,
+             Color.RED,
+             Color.BLUE,
+             Color.GREEN
+         
+   };
 
 
    private GraphicsContext context;
    
    public SameGamePane()
    {
-      SameGameBoard board = new SameGameBoard();
+      board = new SameGameBoard();
       
       updateLabel();
       
       canvas = new Canvas(Constants.SCREEN_DIMENSION[0],Constants.SCREEN_DIMENSION[1]);
       
+      canvas.setOnMouseClicked(event ->
+      {
+         double width = canvas.getWidth() / board.getColumns();
+         
+         double height = canvas.getHeight() / board.getRows();
+         
+         int row = (int) (event.getY()/height);
+         
+         int column = (int) (event.getX() / width);
+         
+         board.deleteBlocks(row, column);
+         
+         render();
+         
+      });
       
       setCenter(canvas);
       setBottom(blockCount);
@@ -37,8 +59,26 @@ public class SameGamePane extends BorderPane
 
    private void render()
    {
-      context.setFill(Color.BLUE);
+      context.setFill(Color.BLACK);
       context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+      
+      double width = canvas.getWidth() / board.getColumns();
+      
+      double height = canvas.getHeight() / board.getRows();
+      
+      for(int col = 0; col < board.getColumns(); col++)
+      {
+         for(int row = 0; row < board.getRows(); row++)
+         {
+            int block = board.getBoardSpace(row, col);
+            
+            if(block > 0)
+            {
+               context.setFill(colors[block]);
+               context.fillRect( (col*width) , (row*height) , height, width );
+            }
+         }
+      }
       
    }
 
