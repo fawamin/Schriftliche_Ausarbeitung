@@ -30,7 +30,6 @@ public class SameGamePane extends BorderPane
    {
       board = new SameGameBoard();
       
-      updateLabel();
       
       canvas = new Canvas(Constants.SCREEN_DIMENSION[0],Constants.SCREEN_DIMENSION[1]);
       
@@ -48,13 +47,17 @@ public class SameGamePane extends BorderPane
          
          render();
          
+         updateLabel();
+         
       });
       
       setCenter(canvas);
       setBottom(blockCount);
       
       context = canvas.getGraphicsContext2D();
+      
       render();
+      updateLabel();
    }
 
    private void render()
@@ -84,7 +87,7 @@ public class SameGamePane extends BorderPane
 
    private void updateLabel()
    {
-      // TODO Auto-generated method stub
+      this.blockCount.setText(Integer.toString(board.getRemaining()));
       
    }
 }
