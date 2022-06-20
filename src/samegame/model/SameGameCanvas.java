@@ -17,7 +17,7 @@ public class SameGameCanvas extends Canvas
     * Available Colours for displaying
     */
    private final Color[] colors = new Color[] { Color.BLACK, Color.RED,
-         Color.BLUE, Color.GREEN
+         Color.BLUE, Color.YELLOW
 
    };
 
