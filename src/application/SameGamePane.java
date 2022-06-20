@@ -1,12 +1,17 @@
 package application;
 
+import java.util.Optional;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import samegame.model.SameGameBoard;
 import samegame.common.Constants;
+import samegame.model.SameGameBoard;
 
 public class SameGamePane extends BorderPane
 {
@@ -49,6 +54,11 @@ public class SameGamePane extends BorderPane
          
          updateLabel();
          
+         if(board.isGameOver())
+         {
+            endGame();
+         }
+         
       });
       
       setCenter(canvas);
@@ -58,6 +68,33 @@ public class SameGamePane extends BorderPane
       
       render();
       updateLabel();
+   }
+
+   private void endGame()
+   {
+      Alert popup = new Alert(AlertType.INFORMATION);
+      popup.setTitle("Game over!");
+      if(board.getRemaining() != 0)
+      {
+         popup.setHeaderText("Sie haben verloren.");
+         popup.setContentText("Es sind noch "+ board.getRemaining() +" Blöcke über! \nUm nocheinmal zu spielen drücken sie \"OK\"");
+      }
+      else
+      {
+         popup.setHeaderText("Sie haben gewonnen.");
+         popup.setContentText("Alle blöcke wurden entfernt! \nUm nocheinmal zu spielen drücken sie \"OK\" ");
+      }
+      Optional<ButtonType> result = popup.showAndWait();
+      if(result.get() == ButtonType.OK)
+      {
+         this.board =  new SameGameBoard();
+         render();
+      }
+      else
+      {
+         
+      }
+      
    }
 
    private void render()
