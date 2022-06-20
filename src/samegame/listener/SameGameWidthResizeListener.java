@@ -6,10 +6,23 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import samegame.model.SameGameCanvas;
 
+/**
+ * 
+ * Class for the ResizeListener for the Width of the Canvas
+ *
+ */
 public class SameGameWidthResizeListener implements ChangeListener<Number>
 {
+   // Class Variable
    SameGameCanvas canvas;
 
+   /**
+    * 
+    * Constructor
+    *
+    * @param canvas
+    *           Canvas which is resized
+    */
    public SameGameWidthResizeListener(SameGameCanvas canvas)
    {
       this.canvas = canvas;
@@ -20,6 +33,10 @@ public class SameGameWidthResizeListener implements ChangeListener<Number>
       }
    }
 
+   /**
+    * Changed Method that changes and re-renders the Canvas when the Size of
+    * the window changes
+    */
    @Override
    public void changed(ObservableValue<? extends Number> value, Number old,
          Number newValue)

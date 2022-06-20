@@ -4,15 +4,30 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
 import samegame.common.Constants;
 
+/**
+ * 
+ * Class that Implements the SameGameCanvas to display the SameGameBoard
+ */
 public class SameGameCanvas extends Canvas
 {
+   // Class Variables
    private SameGameBoard board;
 
+   /**
+    * Available Colours for displaying
+    */
    private final Color[] colors = new Color[] { Color.BLACK, Color.RED,
          Color.BLUE, Color.GREEN
 
    };
 
+   /**
+    * 
+    * Constructor that initialises the SameGameCanvas and sets the Variables
+    *
+    * @param sameGameBoard
+    *           SameGameboard which is supposed to be portrayed
+    */
    public SameGameCanvas(SameGameBoard sameGameBoard)
    {
       if (sameGameBoard == null)
@@ -27,6 +42,9 @@ public class SameGameCanvas extends Canvas
       this.setWidth(Constants.SCREEN_DIMENSION[1]);
    }
 
+   /**
+    * Method that Renders the Canvas
+    */
    public void renderCanvas()
    {
       this.getGraphicsContext2D().setFill(Color.BLACK);
@@ -52,8 +70,19 @@ public class SameGameCanvas extends Canvas
       }
    }
 
-   public void setBoard(SameGameBoard newBoard)
+   /**
+    * 
+    * Setter to update the Board
+    *
+    * @param newBoard
+    *   New SameGameBoard to replace the old one
+    */
+   public void setBoard(SameGameBoard newSameGameBoard)
    {
-      this.board = newBoard;
+      if(newSameGameBoard == null)
+      {
+         throw new IllegalArgumentException("SameGameBoard für setBoard Methode ist null!");
+      }
+      this.board = newSameGameBoard;
    }
 }

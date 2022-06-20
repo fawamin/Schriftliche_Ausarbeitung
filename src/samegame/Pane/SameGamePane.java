@@ -14,14 +14,26 @@ import samegame.listener.SameGameWidthResizeListener;
 import samegame.model.SameGameBoard;
 import samegame.model.SameGameCanvas;
 
+/**
+ * 
+ * Class that Displays the SameGame on a Borderpane and implements playing it
+ *
+ */
 public class SameGamePane extends BorderPane
 {
+   // Class Variables
    private SameGameBoard board;
 
    private SameGameCanvas canvas;
 
    private Label blockCount = new Label();
 
+   /**
+    * 
+    * Constructor that Initialises the Canvas and Board, sets the Listeners
+    * and adds everything to the Borderpane
+    *
+    */
    public SameGamePane()
    {
       board = new SameGameBoard();
@@ -36,6 +48,12 @@ public class SameGamePane extends BorderPane
       updateLabel();
    }
 
+   /**
+    * 
+    * Method that Displays the End of Game Message and either Resets the Board
+    * or Ends the Process
+    *
+    */
    public void endGame()
    {
       Alert popup = new Alert(AlertType.CONFIRMATION);
@@ -70,6 +88,11 @@ public class SameGamePane extends BorderPane
 
    }
 
+   /**
+    * 
+    * Method that updates the Label with the remaining Block count.
+    *
+    */
    public void updateLabel()
    {
       this.blockCount.setText(
@@ -77,11 +100,23 @@ public class SameGamePane extends BorderPane
 
    }
 
+   /**
+    * 
+    * Getter for the Canvas
+    *
+    * @return the Canvas
+    */
    public SameGameCanvas getCanvas()
    {
       return this.canvas;
    }
 
+   /**
+    * 
+    * Getter for the Board
+    *
+    * @return the Board
+    */
    public SameGameBoard getBoard()
    {
       return this.board;
