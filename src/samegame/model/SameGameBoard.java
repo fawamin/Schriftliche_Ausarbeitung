@@ -268,4 +268,16 @@ public class SameGameBoard {
 		// No two found adjacent
 		return ret;
 	}
+	
+	/**
+	 * 
+	 * Methode die das Spiel zurrücksetzt
+	 *
+	 */
+	public void resetGame()
+	{
+	   this.remaining = columns * rows;
+	   this.arrBoard = null;
+	   setupBoard();
+	}
 }

@@ -2,5 +2,5 @@ module Schriftliche_Ausarbeitung {
 	requires javafx.controls;
    requires javafx.graphics;
 	
-	opens application to javafx.graphics, javafx.fxml;
+	opens samegame to javafx.graphics, javafx.fxml;
 }
