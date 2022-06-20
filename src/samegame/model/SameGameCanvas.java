@@ -75,13 +75,14 @@ public class SameGameCanvas extends Canvas
     * Setter to update the Board
     *
     * @param newBoard
-    *   New SameGameBoard to replace the old one
+    *           New SameGameBoard to replace the old one
     */
    public void setBoard(SameGameBoard newSameGameBoard)
    {
-      if(newSameGameBoard == null)
+      if (newSameGameBoard == null)
       {
-         throw new IllegalArgumentException("SameGameBoard für setBoard Methode ist null!");
+         throw new IllegalArgumentException(
+               "SameGameBoard für setBoard Methode ist null!");
       }
       this.board = newSameGameBoard;
    }
